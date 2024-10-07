@@ -90,7 +90,7 @@ Before performing the steps, set up the project directory and change to its root
     ```
  6. **Access the API:**
 
-    Open your browser and navigate to http://localhost:5111/Swagger/index.html or https://localhost:7225/Swagger/index.html to access the API endpoints.
+    Open your browser and navigate to http://localhost:5111/Swagger/index.html or https://localhost:7225/Swagger/index.html to access the API endpoints and test them.
 
 ## Running Unit Tests
 
@@ -106,7 +106,12 @@ Before performing the steps, set up the project directory and change to its root
 
 ## Usage
 
-Instructions on how to use the project, including any examples or screenshots.
+Another options to test the APIs is by using Postman. With the help of the Swagger Doc, we can enter the api url as below and execute them
+- POST API
+![image](https://github.com/user-attachments/assets/276d5f8a-e20f-404d-b24e-9358a5ec8aec)
+
+- GET API
+![image](https://github.com/user-attachments/assets/d9b2043b-a96d-4b85-9dbb-6f09543b64fe)
 
 ## Contributing
 
