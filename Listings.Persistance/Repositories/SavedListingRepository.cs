@@ -62,10 +62,18 @@ namespace Listings.Persistance.Repositories
                 return false;
             }
 
-            savedListing.ListingId = newListingId;
-            savedListing.SavedAt = DateTime.Now;
-            _context.Entry(savedListing).State = EntityState.Modified;
-            return await _context.SaveChangesAsync() > 0;
+            //remove the old listing from the saved listings
+            _context.SavedListings.Remove(savedListing);
+            var isUpdated = await _context.SaveChangesAsync() > 0;
+
+            if(isUpdated)
+            {
+                 //add the new listing to the saved listings
+                var newSavedListing = await CreateSavedListingAsync(userId, newListingId);
+                return newSavedListing != null;
+            }
+
+            return false;
         }
 
         public async Task<bool> DeleteSavedListingAsync(int userId, int listingId)
