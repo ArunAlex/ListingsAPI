@@ -5,7 +5,7 @@ operations for users' data.
 
 ## Table of Contents
 
-- [UML](#uml diagram)
+- [UML](#uml-diagram)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -18,19 +18,15 @@ Based on the ERD provided, the Users and SavedListings need to be modeled in a w
 - A User can have zero or more Listings.
 - Zero or more Users can save a Listing.
 
-Here’s how the UML diagram could be structured:
-+-------------+        +-------------------+        +------------+
-|   Users     |        |   SavedListings   |        |   Listings |
-+-------------+        +-------------------+        +------------+
-| id (PK)     |1     * | user_id (PK,FK)   | *    1 | id (PK)    |
-| name        |--------| listing_id (PK,FK)|--------| address    |
-| email       |        | saved_at          |        | suburb     |
-| passwordhash|        +-------------------+        | state      |
-| created_at  |                                     | postcode   |
-+-------------+                                     +------------+
+Here’s how the UML diagram can be structured:
 
-- Users to SavedListings: One user can save many listings (1 to many).
-- Listings to SavedListings: One listing can be saved by many users (1 to many).
+![Screenshot 2024-10-07 at 1 00 06 pm](https://github.com/user-attachments/assets/19ca0463-e084-4fab-a308-e15851c5ae8f)
+
+The diagram depicts the following:
+- A User can save zero or more Listings: This indicates a one-to-many relationship between User and SavedListing (the join table).
+- A Listing can be saved by zero or more Users: This also indicates a one-to-many relationship between
+Listing and SavedListing.
+- SavedListing acts as the join table for the many-to-many relationship between Users and Listings.
 
 ## Installation
 
