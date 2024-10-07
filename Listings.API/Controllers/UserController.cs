@@ -59,6 +59,11 @@ namespace Listings.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest user)
         {
+            if(!ModelState.IsValid) 
+            {
+                return BadRequest(ModelState);
+            }
+
             var createdUser = await _userRepository.CreateUserAsync(user);
             return CreatedAtAction(nameof(GetUser), new { id = createdUser.Id }, createdUser);
         }
@@ -100,6 +105,11 @@ namespace Listings.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UpdateUser(int id, [FromBody] UpdateUserRequest request)
         {
+            if (!ModelState.IsValid) 
+            {
+                return BadRequest(ModelState);
+            }
+            
             var result = await _userRepository.UpdateUserAsync(id, request);
             if (!result) 
             {

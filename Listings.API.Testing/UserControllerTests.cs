@@ -106,6 +106,24 @@ namespace Listings.API.Testing
             result.Should().BeOfType<NoContentResult>();
         }
 
+                [Fact]
+        public async Task UpdateUser2_ShouldReturnNoContent_WhenUserExists()
+        {
+            // Arrange
+            var updateUserRequest = new UpdateUserRequest()
+            {
+                Email = "test@email.com",  
+            };
+
+            _mockUserRepository.Setup(c => c.UpdateUserAsync(1, updateUserRequest)).ReturnsAsync(true);
+
+            // Act
+            var result = await _controller.UpdateUser(1, updateUserRequest);
+
+            // Assert
+            result.Should().BeOfType<NoContentResult>();
+        }
+
         [Fact]
         public async Task CreateUser_ShouldReturnBadRequest_WhenModelIsInvalid()
         {
