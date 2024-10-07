@@ -7,6 +7,7 @@ namespace Listings.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Produces("application/json")]
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
