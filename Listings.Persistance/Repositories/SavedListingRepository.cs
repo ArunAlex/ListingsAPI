@@ -34,7 +34,7 @@ namespace Listings.Persistance.Repositories
                 return null;
             }
 
-            SavedListing savedListing = await _context.SavedListings
+            var savedListing = await _context.SavedListings
                 .FirstOrDefaultAsync(sl => sl.UserId == userId && sl.ListingId == listingId);
 
             if(savedListing == null)
