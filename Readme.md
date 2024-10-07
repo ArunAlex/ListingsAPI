@@ -7,6 +7,7 @@ operations for users' data.
 
 - [UML](#uml-diagram)
 - [Installation](#installation)
+- [Running Unit Tests](#running-unit-tests)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
@@ -82,12 +83,23 @@ Listing and SavedListing.
  5. **Run the application:**
 
     ```sh
-    dotnet run
+    dotnet run --project Listings.API
     ```
  6. **Access the API:**
 
-    Open your browser or API client and navigate to https://localhost:5001/Swagger/index.html to access the API endpoints.
+    Open your browser and navigate to http://localhost:5111/Swagger/index.html or https://localhost:7225/Swagger/index.html to access the API endpoints.
 
+## Running Unit Tests
+
+1. **Navigate to the project directory:**
+
+   ```sh
+   cd your-repo-name
+
+2. **Run the unit tests:**
+
+   ```sh
+   dotnet test
 
 ## Usage
 
