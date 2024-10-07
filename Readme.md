@@ -94,7 +94,7 @@ Listing and SavedListing.
 1. **Navigate to the project directory:**
 
    ```sh
-   cd your-repo-name
+   cd ListingsAPI
 
 2. **Run the unit tests:**
 
