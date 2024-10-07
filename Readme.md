@@ -5,7 +5,7 @@ operations for users' data.
 
 ## Table of Contents
 
-- [UML](#uml diagram)
+- [UML](#uml-diagram)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -18,7 +18,9 @@ Based on the ERD provided, the Users and SavedListings need to be modeled in a w
 - A User can have zero or more Listings.
 - Zero or more Users can save a Listing.
 
-Here’s how the UML diagram could be structured:
+Here’s how the UML diagram can be structured:
+
+```sh
 +-------------+        +-------------------+        +------------+
 |   Users     |        |   SavedListings   |        |   Listings |
 +-------------+        +-------------------+        +------------+
@@ -28,13 +30,64 @@ Here’s how the UML diagram could be structured:
 | passwordhash|        +-------------------+        | state      |
 | created_at  |                                     | postcode   |
 +-------------+                                     +------------+
+```
 
-- Users to SavedListings: One user can save many listings (1 to many).
-- Listings to SavedListings: One listing can be saved by many users (1 to many).
+The diagram depicts the following:
+- A User can save zero or more Listings: This indicates a one-to-many relationship between User and SavedListing (the join table).
+- A Listing can be saved by zero or more Users: This also indicates a one-to-many relationship between
+Listing and SavedListing.
+- SavedListing acts as the join table for the many-to-many relationship between Users and Listings.
 
 ## Installation
 
-Instructions on how to install and set up the project.
+### Prerequisites
+
+- [.NET SDK](https://dotnet.microsoft.com/download) (version 6.0 or later)
+- [SQLite](https://www.sqlite.org/download.html)
+- [Git](https://git-scm.com/)
+
+### Steps
+
+1. **Clone the repository:**
+
+   ```sh
+   git clone https://github.com/ArunAlex/ListingsAPI.git
+   ```
+   
+2. **Navigate to the project directory:**
+
+   ```sh
+   cd ListingsAPI
+   ```
+   
+3. **Restore the .NET dependencies:**
+
+   ```sh
+   dotnet restore
+   ```
+   
+4. **Set up the SQLite database:**
+
+   - Update the connection string in appsettings.json to use SQLite. It should look something like this:
+      ```sh
+      "ConnectionStrings": {
+          "DefaultConnection": "Data Source=app.db"
+      }
+      ```
+   - Apply migrations to create the database schema:
+     ```sh
+     dotnet ef database update --startup-project Listings.API
+     ```
+     
+ 5. **Run the application:**
+
+    ```sh
+    dotnet run
+    ```
+ 6. **Access the API:**
+
+    Open your browser or API client and navigate to https://localhost:5001/Swagger/index.html to access the API endpoints.
+
 
 ## Usage
 
