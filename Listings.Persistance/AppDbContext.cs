@@ -1,4 +1,4 @@
-using Listings.Domain.Models;
+using Models = Listings.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Listings.Persistance
@@ -10,9 +10,9 @@ namespace Listings.Persistance
 
         }
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<Listings.Domain.Models.Listing> Listings { get; set; }
-        public DbSet<SavedListing> SavedListings { get; set; }
+        public DbSet<Models.User> Users { get; set; }
+        public DbSet<Models.Listing> Listings { get; set; }
+        public DbSet<Models.SavedListing> SavedListings { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -22,18 +22,18 @@ namespace Listings.Persistance
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Configuring the SavedListing as a many-to-many relationship
-            modelBuilder.Entity<SavedListing>()
+            modelBuilder.Entity<Models.SavedListing>()
                 .HasKey(sl => new { sl.UserId, sl.ListingId });
 
             // Configure one-to-many relationship between User and SavedListings
-            modelBuilder.Entity<SavedListing>()
+            modelBuilder.Entity<Models.SavedListing>()
                 .HasOne(sl => sl.User)
                 .WithMany(u => u.SavedListings)
                 .HasForeignKey(sl => sl.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             // Configure one-to-many relationship between Listing and SavedListings
-            modelBuilder.Entity<SavedListing>()
+            modelBuilder.Entity<Models.SavedListing>()
                 .HasOne(sl => sl.Listing)
                 .WithMany(l => l.SavedByUsers)
                 .HasForeignKey(sl => sl.ListingId)
