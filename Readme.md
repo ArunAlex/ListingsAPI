@@ -48,6 +48,8 @@ Listing and SavedListing.
 - [Git](https://git-scm.com/)
 
 ### Steps
+Run the following steps using the command line prompt on windows or terminal on mac. 
+Before performing the steps, set up the project directory and change to its root.
 
 1. **Clone the repository:**
 
@@ -79,6 +81,7 @@ Listing and SavedListing.
      ```sh
      dotnet ef database update --startup-project Listings.API
      ```
+     Note: Refer https://www.nuget.org/packages/dotnet-ef to install dotnet-ef command
      
  5. **Run the application:**
 
