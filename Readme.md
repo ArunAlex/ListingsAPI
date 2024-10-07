@@ -20,7 +20,17 @@ Based on the ERD provided, the Users and SavedListings need to be modeled in a w
 
 Here’s how the UML diagram can be structured:
 
-![Screenshot 2024-10-07 at 1 00 06 pm](https://github.com/user-attachments/assets/19ca0463-e084-4fab-a308-e15851c5ae8f)
+```sh
++-------------+        +-------------------+        +------------+
+|   Users     |        |   SavedListings   |        |   Listings |
++-------------+        +-------------------+        +------------+
+| id (PK)     |1     * | user_id (PK,FK)   | *    1 | id (PK)    |
+| name        |--------| listing_id (PK,FK)|--------| address    |
+| email       |        | saved_at          |        | suburb     |
+| passwordhash|        +-------------------+        | state      |
+| created_at  |                                     | postcode   |
++-------------+                                     +------------+
+```
 
 The diagram depicts the following:
 - A User can save zero or more Listings: This indicates a one-to-many relationship between User and SavedListing (the join table).
@@ -30,7 +40,54 @@ Listing and SavedListing.
 
 ## Installation
 
-Instructions on how to install and set up the project.
+### Prerequisites
+
+- [.NET SDK](https://dotnet.microsoft.com/download) (version 6.0 or later)
+- [SQLite](https://www.sqlite.org/download.html)
+- [Git](https://git-scm.com/)
+
+### Steps
+
+1. **Clone the repository:**
+
+   ```sh
+   git clone https://github.com/ArunAlex/ListingsAPI.git
+   ```
+   
+2. **Navigate to the project directory:**
+
+   ```sh
+   cd ListingsAPI
+   ```
+   
+3. **Restore the .NET dependencies:**
+
+   ```sh
+   dotnet restore
+   ```
+   
+4. **Set up the SQLite database:**
+
+   - Update the connection string in appsettings.json to use SQLite. It should look something like this:
+      ```sh
+      "ConnectionStrings": {
+          "DefaultConnection": "Data Source=app.db"
+      }
+      ```
+   - Apply migrations to create the database schema:
+     ```sh
+     dotnet ef database update --startup-project Listings.API
+     ```
+     
+ 5. **Run the application:**
+
+    ```sh
+    dotnet run
+    ```
+ 6. **Access the API:**
+
+    Open your browser or API client and navigate to https://localhost:5001/Swagger/index.html to access the API endpoints.
+
 
 ## Usage
 
