@@ -1,0 +1,9 @@
+# Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
+bin/
+debug/
+obj/
+
+# db files
+app.db
+app.db-shm
+app.db-wal

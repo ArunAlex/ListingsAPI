@@ -1,0 +1,14 @@
+@Listing.API_HostAddress = http://localhost:5111
+
+POST http://localhost:5111/api/user
+Content-Type: application/json
+
+{
+  "id": 1,
+  "username": "string",
+  "email": "user@example.com",
+  "passwordHash": "string",
+  "createdAt": "2024-10-06T05:21:50.973Z"
+}
+
+###
