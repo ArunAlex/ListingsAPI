@@ -109,7 +109,7 @@ namespace Listings.API.Controllers
             {
                 return BadRequest(ModelState);
             }
-            
+                    
             var result = await _userRepository.UpdateUserAsync(id, request);
             if (!result) 
             {
